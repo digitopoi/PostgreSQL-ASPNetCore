@@ -24,6 +24,8 @@ namespace TestAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddEntityFrameworkNpgsql().AddDbContext<WebApiContext>(opt => 
+                opt.UseNpgsql(Configuration.GetConnectionString("WebApiConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
